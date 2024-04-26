@@ -1,9 +1,10 @@
 "use client";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
+import EditableImage from "./../../components/layout/EditableImage";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import UserTabs from "../../components/layout/UserTabs";
 
 export default function ProfilePage() {
   const session = useSession();
@@ -15,6 +16,8 @@ export default function ProfilePage() {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [profileFetched, setProfileFetched] = useState(false);
   const { status } = session;
 
   useEffect(() => {
@@ -28,6 +31,8 @@ export default function ProfilePage() {
           setPostalCode(data.postalCode);
           setCity(data.city);
           setCountry(data.country);
+          setIsAdmin(data.admin);
+          setProfileFetched(true);
         });
       });
     }
@@ -43,7 +48,7 @@ export default function ProfilePage() {
         },
         body: JSON.stringify({
           name: userName,
-          // image,
+          image,
           phone,
           streetAddress,
           postalCode,
@@ -51,8 +56,11 @@ export default function ProfilePage() {
           country,
         }),
       });
-      if (response.ok) resolve();
-      else reject();
+      if (response.ok) {
+        resolve();
+      } else {
+        reject();
+      }
     });
 
     await toast.promise(savingPromise, {
@@ -62,33 +70,7 @@ export default function ProfilePage() {
     });
   }
 
-  async function handleFileChange(ev) {
-    const files = ev.target.files;
-    if (files?.length === 1) {
-      const data = new FormData();
-      data.set("file", files[0]);
-
-      const uploadPromise = fetch("/api/upload", {
-        method: "POST",
-        body: data,
-      }).then((response) => {
-        if (response.ok) {
-          return response.json().then((link) => {
-            setImage(link);
-          });
-        }
-        throw new Error("Something went wrong");
-      });
-
-      await toast.promise(uploadPromise, {
-        loading: "Uploading...",
-        success: "Upload complete!",
-        error: "Something went wrong!",
-      });
-    }
-  }
-
-  if (status === "loading") {
+  if (status === "loading" || !profileFetched) {
     return "Loading...";
   }
 
@@ -98,30 +80,12 @@ export default function ProfilePage() {
 
   return (
     <section className="mt-8">
-      <h1 className="text-center text-primary text-4xl mb-4">Profile</h1>
-      <div className="max-w-md mx-auto">
+      <UserTabs isAdmin={isAdmin} />
+      <div className="max-w-2xl mx-auto mt-8">
         <div className="flex gap-4">
           <div>
             <div className="p-2 rounded-lg relative max-w-[120px] min-w-[100px]">
-              {image && (
-                <Image
-                  className="rounded-lg w-full h-full mb-1"
-                  src={image}
-                  height={250}
-                  width={250}
-                  alt={"avatar"}
-                />
-              )}
-              <label>
-                <input
-                  type="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-                <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">
-                  Edit
-                </span>
-              </label>
+              <EditableImage link={image} setLink={setImage} />
             </div>
           </div>
           <form className="grow" onSubmit={handleProfileInfoUpdate}>
@@ -163,7 +127,7 @@ export default function ProfilePage() {
                   onChange={(ev) => setPostalCode(ev.target.value)}
                 />
               </div>
-              <div>
+              <div className="grow">
                 <label>City</label>
                 <input
                   type="text"

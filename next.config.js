@@ -8,7 +8,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'pizza-app.s3.amazonaws.com',
+        hostname: 'denys-pizza-app.s3.amazonaws.com',
       }
     ]
   }
