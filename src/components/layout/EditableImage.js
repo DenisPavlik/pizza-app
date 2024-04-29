@@ -41,7 +41,7 @@ export default function EditableImage({ link, setLink }) {
         />
       )}
       {!link && (
-        <div className="text-center bg-gray-200 p-12 text-gray-500 rounded-lg mb-1">
+        <div className="text-center bg-gray-200 p-4 text-gray-500 rounded-lg mb-1">
           No image
         </div>
       )}
