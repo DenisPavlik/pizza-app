@@ -57,6 +57,12 @@ export default function MenuItemsPage() {
               </Link>
             ))}
         </div>
+        {!menuItems?.length > 0 && (
+            <h2 className="max-w-2xl flex justify-center mt-8">
+              <span>There is no one menu item. To create on press "Create new menu
+              item".</span>
+            </h2>
+          )}
       </div>
     </section>
   );

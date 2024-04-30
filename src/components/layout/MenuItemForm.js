@@ -5,7 +5,7 @@ import MenuItemPriceProps from "@/components/layout/MenuItemPriceProps";
 export default function MenuItemForm({ onSubmit, menuItem }) {
   const [name, setName] = useState(menuItem?.name || "");
   const [description, setDescription] = useState(menuItem?.description || "");
-  const [basePrise, setBasePrise] = useState(menuItem?.basePrise || "");
+  const [basePrice, setBasePrice] = useState(menuItem?.basePrice || "");
   const [image, setImage] = useState(menuItem?.image || "");
   const [sizes, setSizes] = useState(menuItem?.sizes || []);
   const [extraIngredientPrices, setExtraIngredientPrices] = useState(
@@ -16,7 +16,12 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
 
   useEffect(() => {
     fetch("/api/categories").then((res) =>
-      res.json().then((categories) => setCategories(categories))
+      res.json().then((categories) => {
+        setCategories(categories);
+        if (!category) {
+          setCategory(categories[0]);
+        }
+      })
     );
   }, []);
 
@@ -28,7 +33,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           name,
           description,
           category,
-          basePrise,
+          basePrice,
           sizes,
           extraIngredientPrices,
         });
@@ -66,8 +71,8 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           <label>Base price</label>
           <input
             type="text"
-            value={basePrise}
-            onChange={(ev) => setBasePrise(ev.target.value)}
+            value={basePrice}
+            onChange={(ev) => setBasePrice(ev.target.value)}
           />
           <MenuItemPriceProps
             name={"Sizes"}
