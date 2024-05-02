@@ -21,6 +21,8 @@ export default function MenuItem(menuItem) {
 
     addToCart(menuItem, selectedSize, selectedExtras);
     setShowPopup(false);
+    setSelectedExtras([]);
+    setSelectedSize(sizes?.[0])
     toast.success("Added to cart");
   }
 
