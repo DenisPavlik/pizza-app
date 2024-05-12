@@ -11,21 +11,21 @@ export default function Home() {
         <SectionHeaders subHeader={"Our story"} mainHeader={"About us"} />
         <div className="text-gray-500 max-w-2xl mx-auto mt-4 flex flex-col gap-4">
           <p>
-            Lorem ipsum dolor sit amet, consecthey adipisucung elut. Maqnu
-            munuma odit recisandat. Illum ipsa non oeunsnud? Eim ipsam istt qiis
-            suscipit teniustr? Aperiajs esse figiat imvemtore lavorioasm
-            officiis quam rem!
+            In 1985, ST PIZZA opened its doors for the very first time in Plano,
+            Texas – and just like that, the Original home of all the pizza,
+            pasta, salad, and desserts you can eat was born. For nearly four
+            decades, ST PIZZA has been committed to creating fun, family-friendly
+            restaurants where guests can spend quality time together and enjoy
+            all their favorites for one low price.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consecthey adipisucung elut. Maqnu
-            munuma odit recisandat. Illum ipsa non oeunsnud? Eim ipsam istt qiis
-            suscipit teniustr? Aperiajs esse figiat imvemtore lavorioasm
-            officiis quam rem!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consecthey adipisucung elut. Maqnu
-            munuma odit recisandat. Illum ipsa non oeunsnud? Eim ipsam istt qiis
-            suscipit teniustr?
+            Consistently adapting to meet the changing needs of its guests in
+            recent years, ST PIZZA put a stronger focus on its off-premise options
+            with the launch of online ordering, and new menu items. Now, fans
+            can easily order their favorites for pick-up or delivery at ST PIZZA
+            locations across the country, making it easier for guests to enjoy
+            TBPVA™, wherever they want to!  TBPVA™, you ask?  The Best Pizza
+            Value Anywhere!
           </p>
         </div>
       </section>

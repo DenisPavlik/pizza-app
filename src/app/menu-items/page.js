@@ -41,6 +41,7 @@ export default function MenuItemsPage() {
           {menuItems?.length > 0 &&
             menuItems.map((item) => (
               <Link
+                key={item._id}
                 href={"/menu-items/edit/" + item._id}
                 className="bg-gray-200 rounded-lg p-4"
               >
@@ -59,8 +60,7 @@ export default function MenuItemsPage() {
         </div>
         {!menuItems?.length > 0 && (
             <h2 className="max-w-2xl flex justify-center mt-8">
-              <span>There is no one menu item. To create on press "Create new menu
-              item".</span>
+              <span>There is no one menu item.</span>
             </h2>
           )}
       </div>

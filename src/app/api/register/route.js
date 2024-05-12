@@ -1,9 +1,10 @@
-import { User } from "@/modules/User";
+import { User } from "@/models/User";
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
 export async function POST(req) {
-  const body = await req.json();
   mongoose.connect(process.env.MONGO_URL);
+  const body = await req.json();
   const pass = body.password;
 
   if (!pass?.length || pass.length < 5) {

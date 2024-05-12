@@ -9,7 +9,7 @@ export default function AddToCartButton({
   if (!hasSizesOrExtras) {
     return (
       <div className="flying-button-parent mt-4">
-        <FlyingButton src={image} targetTop={"5%"} targetLeft={"90%"}>
+        <FlyingButton src={image} targetTop={"5%"} targetLeft={"85%"}>
           <span onClick={onClick}>Add to cart ${basePrice}</span>
         </FlyingButton>
       </div>
