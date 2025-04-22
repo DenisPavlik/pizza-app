@@ -38,21 +38,28 @@ function AuthLinks({ status, userName }) {
 }
 
 export default function Header() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const session = useSession();
   const status = session?.status;
   const userData = session.data?.user;
   const { cartProducts } = useContext(CartContext);
   let userName = userData?.name || userData?.email;
+  // if (userData?.name) {
+  //   userName = userData.name
+  // }
   if (userName && userName.includes(" ")) {
     userName = userName.split(" ")[0];
   }
+  
+
+//   console.log("🟡 Session status:", status);
+//   console.log("🟢 Session data:", session?.data);
 
   return (
     <header>
       <div className="flex items-center md:hidden justify-between">
         <Link className="text-primary font-semibold text-2xl" href={"/"}>
-          ST PIZZA
+        Geronimo&apos;s pizza
         </Link>
         <div className="flex gap-8 items-center">
           <Link href={"/cart"} className="relative">
@@ -66,28 +73,31 @@ export default function Header() {
               </span>
             )}
           </Link>
-          <button 
+          <button
             className="p-1 border"
-            onClick={()=>setMobileNavOpen(prev=>!prev)}>
+            onClick={() => setMobileNavOpen((prev) => !prev)}
+          >
             <Bars3 />
           </button>
         </div>
       </div>
       {mobileNavOpen && (
-        <div className="md:hidden p-4 bg-gray-200 rounded-lg mt-2 
+        <div
+          className="md:hidden p-4 bg-gray-200 rounded-lg mt-2
         flex flex-col gap-2 text-center"
-          onClick={()=>setMobileNavOpen(prev=>!prev)}>
-            <Link href={"/"}>Home</Link>
-            <Link href={"/menu"}>Menu</Link>
-            <Link href={"/#about"}>About</Link>
-            <Link href={"/#contact"}>Contact</Link>
-            <AuthLinks status={status} userName={userName} />
+          onClick={() => setMobileNavOpen((prev) => !prev)}
+        >
+          <Link href={"/"}>Home</Link>
+          <Link href={"/menu"}>Menu</Link>
+          <Link href={"/#about"}>About</Link>
+          <Link href={"/#contact"}>Contact</Link>
+          <AuthLinks status={status} userName={userName} />
         </div>
       )}
       <div className="hidden md:flex item-center justify-between">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link className="text-primary font-semibold text-2xl" href={"/"}>
-            ST PIZZA
+          Geronimo&apos;s pizza
           </Link>
           <Link href={"/"}>Home</Link>
           <Link href={"/menu"}>Menu</Link>
@@ -100,7 +110,7 @@ export default function Header() {
             <ShoppingCart />
             {cartProducts?.length > 0 && (
               <span
-                className="absolute -top-2 -right-4 bg-primary 
+                className="absolute -top-2 -right-4 bg-primary
           text-white rounded-full text-xs p-1 leading-3"
               >
                 {cartProducts.length}

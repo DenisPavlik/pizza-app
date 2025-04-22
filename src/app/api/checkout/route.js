@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import { Order } from "@/models/Order";
 import { MenuItem } from "@/models/MenuItem";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions";
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 export async function POST(req) {
-  mongoose.connect(process.env.MONGO_URL);
+  mongoose.connect(process.env.MONGODB_URI);
 
   const { cartProducts, address } = await req.json();
   const session = await getServerSession(authOptions);

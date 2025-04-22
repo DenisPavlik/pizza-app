@@ -1,4 +1,8 @@
-export default function AddressInputs({ addressProps, setAddressProp, disabled = false }) {
+export default function AddressInputs({
+  addressProps,
+  setAddressProp,
+  disabled = false,
+}) {
   const { phone, streetAddress, postalCode, city, country } = addressProps;
   return (
     <>
@@ -7,7 +11,8 @@ export default function AddressInputs({ addressProps, setAddressProp, disabled =
         disabled={disabled}
         type="tel"
         placeholder="Phone number"
-        value={phone || ''}
+        value={phone || ""}
+        required="true"
         onChange={(ev) => setAddressProp("phone", ev.target.value)}
       />
       <label>Street address</label>
@@ -15,7 +20,8 @@ export default function AddressInputs({ addressProps, setAddressProp, disabled =
         disabled={disabled}
         type="text"
         placeholder="Street address"
-        value={streetAddress || ''}
+        value={streetAddress || ""}
+        required="true"
         onChange={(ev) => setAddressProp("streetAddress", ev.target.value)}
       />
       <div className="flex gap-2">
@@ -25,7 +31,8 @@ export default function AddressInputs({ addressProps, setAddressProp, disabled =
             disabled={disabled}
             type="text"
             placeholder="Postal code"
-            value={postalCode || ''}
+            value={postalCode || ""}
+            required="true"
             onChange={(ev) => setAddressProp("postalCode", ev.target.value)}
           />
         </div>
@@ -35,7 +42,8 @@ export default function AddressInputs({ addressProps, setAddressProp, disabled =
             disabled={disabled}
             type="text"
             placeholder="City"
-            value={city || ''}
+            value={city || ""}
+            required="true"
             onChange={(ev) => setAddressProp("city", ev.target.value)}
           />
         </div>
@@ -45,7 +53,8 @@ export default function AddressInputs({ addressProps, setAddressProp, disabled =
         disabled={disabled}
         type="text"
         placeholder="Country"
-        value={country || ''}
+        value={country || ""}
+        required="true"
         onChange={(ev) => setAddressProp("country", ev.target.value)}
       />
     </>
