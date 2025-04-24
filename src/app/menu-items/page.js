@@ -5,6 +5,7 @@ import UserTabs from "@/components/layout/UserTabs";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import LoadingStatus from "@/components/layout/LoadingStatus";
 
 export default function MenuItemsPage() {
   const { loading, data } = useProfile();
@@ -19,11 +20,16 @@ export default function MenuItemsPage() {
   }, []);
 
   if (loading) {
-    return "Loading user info...";
+    return <LoadingStatus text={'Loading menu-items'} />;
   }
 
   if (!data.admin) {
-    return "Not an admin";
+    return <div className="mt-32 text-center font-josefin">
+    <h1 className="text-xl">Not an admin</h1>
+    <Link href={"/"} className="text-gray-500 hover:underline">
+      Press here for redirect
+    </Link>
+  </div>;
   }
 
   return (
@@ -49,7 +55,7 @@ export default function MenuItemsPage() {
                   <Image
                     className="rounded-md"
                     src={item.image}
-                    alt={""}
+                    alt={"item"}
                     width={200}
                     height={200}
                   />

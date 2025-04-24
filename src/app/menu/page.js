@@ -1,6 +1,7 @@
 "use client";
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import MenuItem from "@/components/menu/MenuItem";
+import Preloader from "@/components/Preloader";
 import { useEffect, useState } from "react";
 
 export default function MenuPage() {
@@ -23,14 +24,14 @@ export default function MenuPage() {
               <SectionHeaders mainHeader={c.name} />
             </div>
             <div className="grid sm:grid-cols-3 gap-4 mt-6 mb-12">
-              {menuItems?.length > 0 &&
+              {menuItems?.length > 0 ?
                 menuItems
                   .filter((item) => item.category === c._id)
                   .map((item) => (
                     <div key={item._id}>
                       <MenuItem {...item} />
                     </div>
-                  ))}
+                  )) : <Preloader />}
             </div>
           </div>
         ))}

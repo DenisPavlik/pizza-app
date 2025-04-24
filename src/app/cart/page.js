@@ -81,7 +81,7 @@ export default function CartPage() {
     return (
       <section className="mt-8 text-center">
         <SectionHeaders mainHeader="Cart" />
-        <p className="mt-4">Your shopping cart is empty 😔</p>
+        <p className="mt-4 font-josefin">Your shopping cart is empty 😔</p>
       </section>
     );
   }

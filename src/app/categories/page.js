@@ -1,7 +1,9 @@
 "use client";
 import DeleteButton from "@/components/DeleteButton";
+import LoadingStatus from "@/components/layout/LoadingStatus";
 import UserTabs from "@/components/layout/UserTabs";
 import { useProfile } from "@/components/UseProfile";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -70,11 +72,16 @@ export default function CategoriesPage() {
   }
 
   if (profileLoading) {
-    return "Loading user info...";
+    return <LoadingStatus text={'Loading categories'} />;
   }
 
   if (!profileData.admin) {
-    return "Not an admin";
+    return <div className="mt-32 text-center font-josefin">
+    <h1 className="text-xl">Not an admin</h1>
+    <Link href={"/"} className="text-gray-500 hover:underline">
+      Press here for redirect
+    </Link>
+  </div>;
   }
 
   return (

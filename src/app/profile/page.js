@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import UserTabs from "@/components/layout/UserTabs";
 import UserForm from "@/components/layout/UserForm";
+import LoadingStatus from '@/components/layout/LoadingStatus'
 
 export default function ProfilePage() {
   const session = useSession();
@@ -50,11 +51,10 @@ export default function ProfilePage() {
   }
 
   if (status === "loading" || !profileFetched) {
-    return "Loading...";
-  }
-
-  if (status === "unauthenticated") {
-    return redirect("/login");
+    if (status === "unauthenticated") {
+      return redirect("/login");
+    }
+    return <LoadingStatus text={'Loading profile'} />;
   }
 
   return (

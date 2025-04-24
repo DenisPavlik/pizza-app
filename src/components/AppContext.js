@@ -25,7 +25,7 @@ export function AppProvider({ children }) {
   useEffect(() => {
     if (ls && ls.getItem("cart"))
       setCartProducts(JSON.parse(ls.getItem("cart")));
-  }, []);
+  }, [ls]);
 
   function saveCartProductsToLocalStorage(cartProducts) {
     if (ls) {

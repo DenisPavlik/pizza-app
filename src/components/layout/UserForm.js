@@ -57,7 +57,7 @@ export default function UserFrom({ user, onSave }) {
           type="email"
           placeholder={"email"}
           disabled={true}
-          value={user.email}
+          value={user?.email}
         />
         <AddressInputs
           addressProps={{ phone, streetAddress, postalCode, city, country }}

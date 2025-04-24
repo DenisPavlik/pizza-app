@@ -50,24 +50,23 @@ export default function Header() {
   if (userName && userName.includes(" ")) {
     userName = userName.split(" ")[0];
   }
-  
 
-//   console.log("🟡 Session status:", status);
-//   console.log("🟢 Session data:", session?.data);
+  //   console.log("🟡 Session status:", status);
+  //   console.log("🟢 Session data:", session?.data);
 
   return (
     <header>
       <div className="flex items-center md:hidden justify-between">
-        <Link className="text-primary font-semibold text-2xl" href={"/"}>
-        Geronimo&apos;s pizza
+        <Link className="text-primary font-lilita text-3xl" href={"/"}>
+          Geronimo&apos;s pizza
         </Link>
         <div className="flex gap-8 items-center">
           <Link href={"/cart"} className="relative">
             <ShoppingCart />
             {cartProducts?.length > 0 && (
               <span
-                className="absolute -top-2 -right-4 bg-primary 
-          text-white rounded-full text-xs p-1 leading-3"
+                className="absolute -top-2 -right-4 bg-primary
+          text-white rounded-full text-xs p-1 leading-3 font-roboto"
               >
                 {cartProducts.length}
               </span>
@@ -89,29 +88,29 @@ export default function Header() {
         >
           <Link href={"/"}>Home</Link>
           <Link href={"/menu"}>Menu</Link>
-          <Link href={"/#about"}>About</Link>
-          <Link href={"/#contact"}>Contact</Link>
+          <Link href={"/about"}>About</Link>
+          <Link href={"/contact"}>Contact</Link>
           <AuthLinks status={status} userName={userName} />
         </div>
       )}
       <div className="hidden md:flex item-center justify-between">
-        <nav className="flex items-center gap-8 text-gray-500 font-semibold">
-          <Link className="text-primary font-semibold text-2xl" href={"/"}>
-          Geronimo&apos;s pizza
+        <nav className="flex items-center gap-8 text-gray-500 font-josefin">
+          <Link className="text-primary relative -top-1 font-lilita text-3xl" href={"/"}>
+            Geronimo&apos;s pizza
           </Link>
           <Link href={"/"}>Home</Link>
           <Link href={"/menu"}>Menu</Link>
-          <Link href={"/#about"}>About</Link>
-          <Link href={"/#contact"}>Contact</Link>
+          <Link href={"/about"}>About</Link>
+          <Link href={"/contact"}>Contact</Link>
         </nav>
-        <nav className="flex items-center gap-4 text-gray-500 font-semibold">
+        <nav className="flex items-center gap-4 text-gray-500 font-josefin">
           <AuthLinks status={status} userName={userName} />
           <Link href={"/cart"} className="relative">
             <ShoppingCart />
             {cartProducts?.length > 0 && (
               <span
                 className="absolute -top-2 -right-4 bg-primary
-          text-white rounded-full text-xs p-1 leading-3"
+          text-white rounded-full text-xs p-1 leading-3 font-roboto"
               >
                 {cartProducts.length}
               </span>

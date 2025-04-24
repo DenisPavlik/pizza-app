@@ -6,7 +6,7 @@ export default function CartProduct({ product, index, onRemove }) {
   return (
     <div className="flex items-center gap-4 border-b py-4">
       <div className="w-24">
-        <Image src={product.image} alt="" width={240} height={240} />
+        <Image src={product.image} alt="product" width={240} height={240} />
       </div>
       <div className="grow">
         <h3 className="font-semibold">{product.name}</h3>
