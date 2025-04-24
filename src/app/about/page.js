@@ -30,7 +30,7 @@ export default function AboutPage() {
           </div>
           <div className="md:w-[50%]">
             <Image
-              src="/Restaurant.png"
+              src="/restaurant.png"
               width={400}
               height={400}
               alt="restaurant"
